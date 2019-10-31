@@ -30,8 +30,6 @@ public class WebConfig implements WebMvcConfigurer
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters)
 	{
-		
-		System.out.println("Entra \n");
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JodaModule());
 	

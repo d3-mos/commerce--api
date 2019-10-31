@@ -1,1 +1,10 @@
+# Environment properties
 **/app.properties
+
+# Eclipse IDE configuration
+.settings
+.classpath
+.project
+
+# Build aplication
+target
