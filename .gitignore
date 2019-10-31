@@ -5,6 +5,7 @@
 .settings
 .classpath
 .project
+.factorypath
 
 # Visual Studio Code configuration files.
 .vscode
