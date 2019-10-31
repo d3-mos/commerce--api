@@ -17,8 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//import models.Archivo;
-//import models.Llave;
 
 
 @Configuration
