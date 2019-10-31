@@ -1,10 +1,13 @@
-# Environment properties
+# Environment properties.
 **/app.properties
 
-# Eclipse IDE configuration
+# Eclipse IDE configuration files.
 .settings
 .classpath
 .project
 
-# Build aplication
+# Visual Studio Code configuration files.
+.vscode
+
+# Build application
 target
