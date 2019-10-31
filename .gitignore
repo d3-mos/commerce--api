@@ -10,5 +10,10 @@
 # Visual Studio Code configuration files.
 .vscode
 
-# Build application
+# Intellij Idea IDE configuration files.
+.idea
+
+# Build application files
 target
+bin
+build
