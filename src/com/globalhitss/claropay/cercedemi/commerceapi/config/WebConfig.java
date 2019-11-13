@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.globalhitss.claropay.cercedemi.commerceapi.controller.CommerceController;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.TestController;
 
 @Configuration
@@ -19,6 +20,10 @@ public class WebConfig implements WebMvcConfigurer
 
 	@Bean
 	public TestController testController(){ return new TestController(); }
+	
+	@Bean
+  public CommerceController commerceController(){ return new CommerceController(); }
+	
 	
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters)

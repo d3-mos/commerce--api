@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+
 
 
 @Configuration
@@ -26,8 +28,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @ComponentScans(
   value = {
-    @ComponentScan("services"),
-    @ComponentScan("dao")
+    @ComponentScan("com.globalhitss.claropay.cercademi.commerceapi.service"),
+    @ComponentScan("com.globalhitss.claropay.cercademi.commerceapi.dao")
   }
 )
 public class HibernateConfig
@@ -83,10 +85,9 @@ public class HibernateConfig
     	LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
     	
     	sessionFactory.setDataSource( getDataSource() );
-//    	sessionFactory.setAnnotatedClasses(
-//    		Archivo.class,
-//    		Llave.class
-//    	);
+      sessionFactory.setAnnotatedClasses(
+      	CommerceModel.class
+      );
     	sessionFactory.setPackagesToScan( new String[] {"entities"} );
     	sessionFactory.setHibernateProperties( getHibernateProperties() );
     	
