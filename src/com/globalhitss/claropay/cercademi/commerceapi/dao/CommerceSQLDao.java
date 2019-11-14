@@ -13,7 +13,8 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 
 @Repository
-public class CommerceSQLDao {
+public class CommerceSQLDao implements CommerceDao 
+{
 
   @Autowired
   private SessionFactory sessionFactory;
@@ -47,7 +48,7 @@ public class CommerceSQLDao {
   {
     String querySelect = "from CommerceModel as c where c.species = (:species)";
     
-    Query<Commerce> query = getSession().createQuery(querySelect);
+    Query<Commerce> query = getSession().createQuery(querySelect, Commerce.class);
     query.setParameter("species", species);
     
     return query.getResultList();
@@ -57,7 +58,7 @@ public class CommerceSQLDao {
   {
     String querySelect = "from CommerceModel as c where c.className = (:className)";
     
-    Query<Commerce> query = getSession().createQuery(querySelect);
+    Query<Commerce> query = getSession().createQuery(querySelect, Commerce.class);
     query.setParameter("className", className);
     
     return query.getResultList();

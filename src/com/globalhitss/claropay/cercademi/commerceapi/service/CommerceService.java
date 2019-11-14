@@ -1,6 +1,5 @@
 package com.globalhitss.claropay.cercademi.commerceapi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhitss.claropay.cercademi.commerceapi.dao.CommerceDao;
-import com.globalhitss.claropay.cercademi.commerceapi.dao.CommerceSQLDao;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 @Service
 public class CommerceService {
 
   @Autowired
-  private CommerceSQLDao commerceSQLDao;
+  private CommerceDao commerceSQLDao;
   
   @Transactional(readOnly = true)
   public Commerce commerceById(int id)

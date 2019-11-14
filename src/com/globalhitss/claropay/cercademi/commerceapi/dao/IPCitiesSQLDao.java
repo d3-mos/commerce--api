@@ -12,7 +12,7 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
 
 
 @Repository
-public class IPCitiesSQLDao
+public class IPCitiesSQLDao implements IPCitiesDao
 {
   @Autowired
   private SessionFactory sessionFactory;
