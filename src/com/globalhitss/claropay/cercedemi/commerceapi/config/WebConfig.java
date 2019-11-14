@@ -23,10 +23,10 @@ public class WebConfig implements WebMvcConfigurer
 	public TestController testController(){ return new TestController(); }
 	
 	@Bean
-  public CommerceController commerceController(){ return new CommerceController(); }
+    public CommerceController commerceController(){ return new CommerceController(); }
 	
 	@Bean 
-	public LocationController ipLocationController() { return new LocationController(); }
+	public LocationController locationController() { return new LocationController(); }
 	
 	
 	@Override
