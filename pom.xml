@@ -85,17 +85,6 @@
   
   <build>
     <sourceDirectory>src</sourceDirectory>
-    
-          <!-- Mapping properties file. -->
-      <resources>
-        <resource>
-          <directory>WebContent/WEB-INF/classes</directory>
-          <filtering>true</filtering>
-          <includes>
-            <include>*.properties</include>
-          </includes>
-        </resource>
-      </resources>
       
     <plugins>
       <plugin>
@@ -109,9 +98,9 @@
       
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
+        <version>3.0.0</version>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>    
+          <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
     </plugins>
