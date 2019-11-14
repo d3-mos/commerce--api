@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.globalhitss.claropay.cercademi</groupId>
   <artifactId>commerceapi</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>Commerce API REST</name>
   <description>This project content the REST API to retrieve commerce information.</description>
   <packaging>war</packaging>
@@ -85,6 +85,18 @@
   
   <build>
     <sourceDirectory>src</sourceDirectory>
+    
+          <!-- Mapping properties file. -->
+      <resources>
+        <resource>
+          <directory>WebContent/WEB-INF/classes</directory>
+          <filtering>true</filtering>
+          <includes>
+            <include>*.properties</include>
+          </includes>
+        </resource>
+      </resources>
+      
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -92,6 +104,14 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>    
         </configuration>
       </plugin>
     </plugins>
