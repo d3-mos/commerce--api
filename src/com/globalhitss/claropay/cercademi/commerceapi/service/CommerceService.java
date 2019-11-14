@@ -3,6 +3,7 @@ package com.globalhitss.claropay.cercademi.commerceapi.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 public class CommerceService {
 
   @Autowired
+  @Qualifier("commerceSQLDAO")
   private CommerceDao commerceSQLDao;
   
   @Transactional(readOnly = true)

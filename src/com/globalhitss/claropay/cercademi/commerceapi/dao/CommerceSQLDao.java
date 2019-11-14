@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.hibernate.query.Query;
 
@@ -13,6 +14,7 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 
 @Repository
+@Qualifier("commerceSQLDAO")
 public class CommerceSQLDao implements CommerceDao 
 {
 

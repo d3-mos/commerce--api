@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ public class LocationService
 {
  
   @Autowired
+  @Qualifier("ipCitiesSQLDAO")
   private IPCitiesDao ipCitiesDao;
   
   public List<IPCities> getLocationByIP(HttpServletRequest rq)

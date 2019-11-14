@@ -6,12 +6,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
 
 
 @Repository
+@Qualifier("ipCitiesSQLDAO")
 public class IPCitiesSQLDao implements IPCitiesDao
 {
   @Autowired
