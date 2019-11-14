@@ -12,18 +12,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.CommerceController;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.LocationController;
-import com.globalhitss.claropay.cercedemi.commerceapi.controller.TestController;
 
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer
 {
-
-	@Bean
-	public TestController testController(){ return new TestController(); }
 	
 	@Bean
-    public CommerceController commerceController(){ return new CommerceController(); }
+  public CommerceController commerceController(){ return new CommerceController(); }
 	
 	@Bean 
 	public LocationController locationController() { return new LocationController(); }
