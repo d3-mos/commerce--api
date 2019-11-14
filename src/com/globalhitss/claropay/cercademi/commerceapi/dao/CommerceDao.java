@@ -1,9 +1,9 @@
 package com.globalhitss.claropay.cercademi.commerceapi.dao;
 
-import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 
 public interface CommerceDao 
 {
-  CommerceModel findBySpecies(String species);
+  Commerce findBySpecies(String species);
 }

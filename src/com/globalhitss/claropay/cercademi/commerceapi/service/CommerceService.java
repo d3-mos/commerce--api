@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhitss.claropay.cercademi.commerceapi.dao.CommerceDao;
 import com.globalhitss.claropay.cercademi.commerceapi.dao.CommerceSQLDao;
-import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 @Service
 public class CommerceService {
@@ -18,25 +18,25 @@ public class CommerceService {
   private CommerceSQLDao commerceSQLDao;
   
   @Transactional(readOnly = true)
-  public CommerceModel commerceById(int id)
+  public Commerce commerceById(int id)
   {
     return commerceSQLDao.selectById(id);
   }
   
   @Transactional(readOnly = true)
-  public List<CommerceModel> commerceByLatAndLng(double lat, double lng)
+  public List<Commerce> commerceByLatAndLng(double lat, double lng)
   {
     return commerceSQLDao.selectByLatAndLng(lat, lng); 
   }
   
   @Transactional(readOnly = true)
-  public List<CommerceModel> commerceByClassName(String className)
+  public List<Commerce> commerceByClassName(String className)
   {
     return commerceSQLDao.selectByClass(className); 
   }
   
   @Transactional(readOnly = true)
-  public List<CommerceModel> commerceBySpecies(String speciesToken)
+  public List<Commerce> commerceBySpecies(String speciesToken)
   {
     return commerceSQLDao.selectBySpecies(speciesToken);
   }

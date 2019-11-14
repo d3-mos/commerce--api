@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globalhitss.claropay.cercademi.commerceapi.service.CommerceService;
-import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -22,13 +22,13 @@ public class CommerceController {
   
   
   @GetMapping("/id/{id}/")
-  public CommerceModel getCommerceByID(@PathVariable int id)
+  public Commerce getCommerceByID(@PathVariable int id)
   {
     return commerceService.commerceById(id);
   }
   
   @GetMapping("/lat/{lat}/lng/{lng}/")
-	public List<CommerceModel> getCommerceByGeolocation(
+	public List<Commerce> getCommerceByGeolocation(
 	  @PathVariable double lat,
 	  @PathVariable double lng
 	) {
@@ -36,13 +36,13 @@ public class CommerceController {
 	}
 	
 	@GetMapping("/class-name/{className}/")
-	public List<CommerceModel> getCommerceByClassName(@PathVariable String className)
+	public List<Commerce> getCommerceByClassName(@PathVariable String className)
 	{
 	  return commerceService.commerceByClassName(className);
 	}
 	 
 	@GetMapping("/species/{species}/")
-	public List<CommerceModel> getCommerceBySpecies(@PathVariable String species)
+	public List<Commerce> getCommerceBySpecies(@PathVariable String species)
 	{
 	  return commerceService.commerceBySpecies(species);
 	}

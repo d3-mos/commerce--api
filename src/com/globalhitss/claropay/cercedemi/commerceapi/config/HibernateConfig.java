@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
 
 
@@ -87,7 +87,7 @@ public class HibernateConfig
     	
     	sessionFactory.setDataSource( getDataSource() );
         sessionFactory.setAnnotatedClasses(
-      	  CommerceModel.class,
+      	  Commerce.class,
       	  IPCities.class
         );
     	sessionFactory.setPackagesToScan( new String[] {"entities"} );

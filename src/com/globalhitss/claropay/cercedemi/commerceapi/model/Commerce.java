@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name="commerce_list")
-public class CommerceModel {
+public class Commerce {
 
   @Id
   @Column(name="id")
@@ -38,9 +38,9 @@ public class CommerceModel {
   @Column(name="past_id")
   private String pastId;
   
-  public CommerceModel() {}
+  public Commerce() {}
   
-  public CommerceModel(
+  public Commerce(
     int id,
     String species, 
     String className,
