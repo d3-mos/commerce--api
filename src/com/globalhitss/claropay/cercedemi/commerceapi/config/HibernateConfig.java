@@ -18,6 +18,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.globalhitss.claropay.cercedemi.commerceapi.model.CommerceModel;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
 
 
 
@@ -85,9 +86,10 @@ public class HibernateConfig
     	LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
     	
     	sessionFactory.setDataSource( getDataSource() );
-      sessionFactory.setAnnotatedClasses(
-      	CommerceModel.class
-      );
+        sessionFactory.setAnnotatedClasses(
+      	  CommerceModel.class,
+      	  IPCities.class
+        );
     	sessionFactory.setPackagesToScan( new String[] {"entities"} );
     	sessionFactory.setHibernateProperties( getHibernateProperties() );
     	

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.CommerceController;
+import com.globalhitss.claropay.cercedemi.commerceapi.controller.LocationController;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.TestController;
 
 @Configuration
@@ -22,7 +23,10 @@ public class WebConfig implements WebMvcConfigurer
 	public TestController testController(){ return new TestController(); }
 	
 	@Bean
-  public CommerceController commerceController(){ return new CommerceController(); }
+    public CommerceController commerceController(){ return new CommerceController(); }
+	
+	@Bean 
+	public LocationController locationController() { return new LocationController(); }
 	
 	
 	@Override

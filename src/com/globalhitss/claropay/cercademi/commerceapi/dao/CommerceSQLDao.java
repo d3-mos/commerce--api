@@ -35,7 +35,7 @@ public class CommerceSQLDao {
     String querySelect = "from CommerceModel as c "
      + "where sqrt( pow(c.lat - (:lat), 2) + pow(c.lng - (:lng), 2) ) < 0.02";
     
-    Query<CommerceModel> query = getSession().createQuery(querySelect);
+    Query<CommerceModel> query = getSession().createQuery(querySelect, CommerceModel.class);
     query.setParameter("lat", lat);
     query.setParameter("lng", lng);
     
