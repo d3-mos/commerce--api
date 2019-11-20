@@ -2,6 +2,7 @@ package com.globalhitss.claropay.cercedemi.commerceapi.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 @Configuration
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer
 {
+
 	@Override
 	@Nullable
 	protected Class<?>[] getRootConfigClasses() {
@@ -23,7 +25,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 	@Override
 	@Nullable
 	protected Class<?>[] getServletConfigClasses() {
-      return new Class<?>[] {
+    return new Class<?>[] {
         WebConfig.class
 	  };
 	}
@@ -33,6 +35,12 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 		return new String[] {"/*"};
 	}
 	
+  
+  @Override
+  protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+    registration.setInitParameter("throwExceptionIfNoHandlerFound", "true"); // -> true
+  }
+  
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException
 	{
