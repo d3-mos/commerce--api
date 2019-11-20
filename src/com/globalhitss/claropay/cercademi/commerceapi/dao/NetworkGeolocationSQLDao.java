@@ -13,8 +13,8 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 
 
 @Repository
-@Qualifier("ipCitiesSQLDAO")
-public class IPCitiesSQLDao implements IPCitiesDao
+@Qualifier("NetworkGeolocationSQLDao")
+public class NetworkGeolocationSQLDao implements NetworkGeolocationDao
 {
   @Autowired
   private SessionFactory sessionFactory;

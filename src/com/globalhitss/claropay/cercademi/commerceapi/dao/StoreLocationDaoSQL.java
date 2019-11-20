@@ -13,9 +13,10 @@ import org.hibernate.query.Query;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
 
 
+
 @Repository
-@Qualifier("commerceSQLDAO")
-public class CommerceSQLDao implements CommerceDao 
+@Qualifier("StoreLocationDaoSQL")
+public class StoreLocationDaoSQL implements StoreLocationDao 
 {
 
   @Autowired
@@ -26,41 +27,48 @@ public class CommerceSQLDao implements CommerceDao
     return sessionFactory.getCurrentSession();
   }
 
+  private Query<StoreLocation> getQuery(String hqlSentence)
+  {
+    return getSession().createQuery(hqlSentence, StoreLocation.class);
+  }
   
+  
+  /***/
   public StoreLocation selectById(int id)
   {
     return getSession().find(StoreLocation.class, id);
   }
   
-  
+  /***/
   public List<StoreLocation> selectByLatAndLng(double lat, double lng)
   {
-    String querySelect = "from StoreLocation as c "
-     + "where sqrt( pow(c.lat - (:lat), 2) + pow(c.lng - (:lng), 2) ) < 0.02";
+    String querySelect = "from StoreLocation where "
+     + "sqrt( pow(lat - (:lat), 2) + pow(lng - (:lng), 2) ) < 0.02";
     
-    Query<StoreLocation> query = getSession().createQuery(querySelect, StoreLocation.class);
+    Query<StoreLocation> query = getQuery(querySelect);
     query.setParameter("lat", lat);
     query.setParameter("lng", lng);
     
     return query.getResultList();
   }
   
-  
+  /***/
   public List<StoreLocation> selectByBrand(String brandToken)
   {
-    String querySelect = "from StoreLocation as c where c.brand = (:brandToken)";
+    String querySelect = "from StoreLocation where brandToken = (:brandToken)";
     
-    Query<StoreLocation> query = getSession().createQuery(querySelect, StoreLocation.class);
+    Query<StoreLocation> query = getQuery(querySelect);
     query.setParameter("brandToken", brandToken);
     
     return query.getResultList();
   }
   
+  /***/
   public List<StoreLocation> selectByClass(String className)
   {
-    String querySelect = "from StoreLocation as c where c.className = (:className)";
+    String querySelect = "from StoreLocation where className = (:className)";
     
-    Query<StoreLocation> query = getSession().createQuery(querySelect, StoreLocation.class);
+    Query<StoreLocation> query = getQuery(querySelect);
     query.setParameter("className", className);
     
     return query.getResultList();

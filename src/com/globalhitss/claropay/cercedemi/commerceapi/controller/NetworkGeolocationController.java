@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.globalhitss.claropay.cercademi.commerceapi.service.LocationService;
+import com.globalhitss.claropay.cercademi.commerceapi.service.NetworkGeolocationService;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 
 
@@ -18,17 +18,17 @@ import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 public class NetworkGeolocationController 
 {
   @Autowired
-  public LocationService locationService;
+  public NetworkGeolocationService networkGeolocationService;
   
   @GetMapping("/my-ip/")
   public List<NetworkGeolocation> getLocationByIP(HttpServletRequest rq)
   {
-    return locationService.getLocationByIP(rq);
+    return networkGeolocationService.getLocationByIP(rq);
   }
   
   @GetMapping("/ip/{ip}/")
   public List<NetworkGeolocation> getLocationByIP(@PathVariable String ip)
   {
-    return locationService.getLocationByIP(ip);
+    return networkGeolocationService.getLocationByIP(ip);
   }
 }

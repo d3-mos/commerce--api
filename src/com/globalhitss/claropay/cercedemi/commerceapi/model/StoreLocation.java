@@ -21,13 +21,12 @@ public class StoreLocation {
   @JsonProperty(access=Access.READ_ONLY)
   private int    id;
   
-  @Column(name="BRAND")
+  @Column(name="BRAND_ID")
   @JsonIgnore
   private int idBrand;
 
-
-  @Column(name="STORE")
-  private String brand;
+  @Column(name="BRAND_TOKEN")
+  private String brandToken;
   
   @Column(name="ADDRESS")
   private String address;
@@ -39,24 +38,25 @@ public class StoreLocation {
   private double lng;
   
   @Column(name="PAST_ID")
+  @JsonIgnore
   private String pastId;
   
   public StoreLocation() {}
   
   public StoreLocation(
     int id,
-    String brand, 
+    String brandToken, 
     String address, 
     double lat, 
     double lng,
     String pastId
   ) {
-    this.id      = id;
-    this.brand   = brand;
-    this.address = address;
-    this.lat     = lat;
-    this.lng     = lng;
-    this.pastId  = pastId;
+    this.id         = id;
+    this.brandToken = brandToken;
+    this.address    = address;
+    this.lat        = lat;
+    this.lng        = lng;
+    this.pastId     = pastId;
   }
   
   public int getId() {
@@ -67,12 +67,12 @@ public class StoreLocation {
     this.id = id;
   }
   
-  public String getBrand() {
-    return brand;
+  public String getBrandToken() {
+    return brandToken;
   }
   
-  public void setBrand(String brand) {
-    this.brand = brand;
+  public void setBrandToken(String brandToken) {
+    this.brandToken = brandToken;
   }
   
   public String getAddress() {

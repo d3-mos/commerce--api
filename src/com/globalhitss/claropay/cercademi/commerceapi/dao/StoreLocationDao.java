@@ -5,7 +5,7 @@ import java.util.List;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
 
 
-public interface CommerceDao 
+public interface StoreLocationDao 
 {
   public StoreLocation selectById(int id);
   
