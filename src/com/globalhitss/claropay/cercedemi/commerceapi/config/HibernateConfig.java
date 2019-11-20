@@ -17,8 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
-import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 
 
 
@@ -87,8 +87,8 @@ public class HibernateConfig
     	
     	sessionFactory.setDataSource( getDataSource() );
         sessionFactory.setAnnotatedClasses(
-      	  Commerce.class,
-      	  IPCities.class
+      	  StoreLocation.class,
+      	  NetworkGeolocation.class
         );
     	sessionFactory.setPackagesToScan( new String[] {"entities"} );
     	sessionFactory.setHibernateProperties( getHibernateProperties() );

@@ -7,55 +7,56 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-@Table(name="commerce_list")
-public class Commerce {
+@Table(name="VIEW_STORES_LOCATION_BRAND")
+public class StoreLocation {
 
   @Id
-  @Column(name="id")
+  @Column(name="ID")
   @GeneratedValue(strategy=GenerationType.AUTO)
   @JsonProperty(access=Access.READ_ONLY)
   private int    id;
   
-  @Column(name="species")
-  private String species;
+  @Column(name="BRAND")
+  @JsonIgnore
+  private int idBrand;
+
+
+  @Column(name="STORE")
+  private String brand;
   
-  @Column(name="class_name")
-  private String className;
-  
-  @Column(name="address")
+  @Column(name="ADDRESS")
   private String address;
   
-  @Column(name="lat")
+  @Column(name="LATITUDE")
   private double lat;
   
-  @Column(name="lng")
+  @Column(name="LONGITUDE")
   private double lng;
   
-  @Column(name="past_id")
+  @Column(name="PAST_ID")
   private String pastId;
   
-  public Commerce() {}
+  public StoreLocation() {}
   
-  public Commerce(
+  public StoreLocation(
     int id,
-    String species, 
-    String className,
+    String brand, 
     String address, 
     double lat, 
     double lng,
     String pastId
   ) {
-      this.id        = id;
-      this.species   = species;
-      this.className = className;
-      this.address   = address;
-      this.lat       = lat;
-      this.lng       = lng;
-      this.pastId    = pastId;
+    this.id      = id;
+    this.brand   = brand;
+    this.address = address;
+    this.lat     = lat;
+    this.lng     = lng;
+    this.pastId  = pastId;
   }
   
   public int getId() {
@@ -66,20 +67,12 @@ public class Commerce {
     this.id = id;
   }
   
-  public String getSpecies() {
-    return species;
+  public String getBrand() {
+    return brand;
   }
   
-  public void setSpecies(String species) {
-    this.species = species;
-  }
-  
-  public String getClassName() {
-    return className;
-  }
-  
-  public void setClassName(String className) {
-    this.className = className;
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
   
   public String getAddress() {
@@ -113,5 +106,12 @@ public class Commerce {
   public void setPastId(String pastId) {
     this.pastId = pastId;
   }
+  
+  public int getIdBrand() {
+    return idBrand;
+  }
 
+  public void setIdBrand(int idBrand) {
+    this.idBrand = idBrand;
+  }
 }

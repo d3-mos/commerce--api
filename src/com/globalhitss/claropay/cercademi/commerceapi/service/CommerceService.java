@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhitss.claropay.cercademi.commerceapi.dao.CommerceDao;
-import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
 
 @Service
 public class CommerceService {
@@ -18,26 +18,26 @@ public class CommerceService {
   private CommerceDao commerceSQLDao;
   
   @Transactional(readOnly = true)
-  public Commerce commerceById(int id)
+  public StoreLocation getCommerceById(int id)
   {
     return commerceSQLDao.selectById(id);
   }
   
   @Transactional(readOnly = true)
-  public List<Commerce> commerceByLatAndLng(double lat, double lng)
+  public List<StoreLocation> getCommerceByLatAndLng(double lat, double lng)
   {
     return commerceSQLDao.selectByLatAndLng(lat, lng); 
   }
   
   @Transactional(readOnly = true)
-  public List<Commerce> commerceByClassName(String className)
+  public List<StoreLocation> getCommerceByOperation(String operation)
   {
-    return commerceSQLDao.selectByClass(className); 
+    return commerceSQLDao.selectByClass(operation); 
   }
   
   @Transactional(readOnly = true)
-  public List<Commerce> commerceBySpecies(String speciesToken)
+  public List<StoreLocation> getCommerceByBrand(String brandToken)
   {
-    return commerceSQLDao.selectBySpecies(speciesToken);
+    return commerceSQLDao.selectByBrand(brandToken);
   }
 }

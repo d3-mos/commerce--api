@@ -9,38 +9,43 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="ip_cities")
-public class IPCities implements Serializable
+@Table(name="CAT_NETWORK_GEOLOCATION")
+public class NetworkGeolocation implements Serializable
 {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name="ip_from")
+	@Column(name="IP_FROM")
 	@JsonIgnore
 	private long ipFrom;
 	
 	@Id
-	@Column(name="ip_to")
+	@Column(name="IP_TO")
 	@JsonIgnore
 	private long ipTo;
 
-	@Column(name="no_nodes")
+	@Column(name="NO_NODES")
 	private int noNodes;
 	
-	@Column(name="latitude")
+	@Column(name="LATITUDE")
 	private double latitude;
 	
-	@Column(name="longitude")
+	@Column(name="LONGITUDE")
 	private double longitude;
 	
-	@Column(name="zip_code")
+	@Column(name="ZIP_CODE")
 	private String zipCode;
 	
 	@Id
-	@Column(name="datasource")
+	@Column(name="DATASOURCE")
   private String datasource;
 
-  public IPCities() {}
+  public NetworkGeolocation() {}
 	
-	public IPCities(long ipFrom, long ipTo, int noNodes, double latitude, double longitude, String zipCode, String datasource) {
+	public NetworkGeolocation(long ipFrom, long ipTo, int noNodes, double latitude, double longitude, String zipCode, String datasource) {
 		super();
 		this.ipFrom = ipFrom;
 		this.ipTo = ipTo;

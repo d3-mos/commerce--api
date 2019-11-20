@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.globalhitss.claropay.cercedemi.commerceapi.model.IPCities;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 
 
 @Repository
@@ -24,13 +24,13 @@ public class IPCitiesSQLDao implements IPCitiesDao
     return sessionFactory.getCurrentSession();
   }
   
-  public List<IPCities> getLocationByIP(long ip)
+  public List<NetworkGeolocation> getLocationByIP(long ip)
   {
-    String querySelect = "from IPCities as t "
+    String querySelect = "from NetworkGeolocation as t "
         + "where t.ipFrom<=(:ip) and t.ipTo>=(:ip) "
         + "order by datasource ASC, noNodes ";
     
-    Query<IPCities> query = getSession().createQuery(querySelect,IPCities.class);
+    Query<NetworkGeolocation> query = getSession().createQuery(querySelect,NetworkGeolocation.class);
     query.setParameter("ip", ip);
     
     return query.getResultList();

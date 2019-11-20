@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globalhitss.claropay.cercademi.commerceapi.service.CommerceService;
-import com.globalhitss.claropay.cercedemi.commerceapi.model.Commerce;
+import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -22,28 +22,29 @@ public class CommerceController {
   
   
   @GetMapping("/id/{id}/")
-  public Commerce getCommerceByID(@PathVariable int id)
+  public StoreLocation getCommerceByID(@PathVariable int id)
   {
-    return commerceService.commerceById(id);
+    return commerceService.getCommerceById(id);
   }
   
   @GetMapping("/lat/{lat}/lng/{lng}/")
-	public List<Commerce> getCommerceByGeolocation(
+	public List<StoreLocation> getCommerceByGeolocation(
 	  @PathVariable double lat,
 	  @PathVariable double lng
 	) {
-    return commerceService.commerceByLatAndLng(lat, lng);
+    return commerceService.getCommerceByLatAndLng(lat, lng);
 	}
 	
-	@GetMapping("/class-name/{className}/")
-	public List<Commerce> getCommerceByClassName(@PathVariable String className)
-	{
-	  return commerceService.commerceByClassName(className);
+	@GetMapping("/operation/{operation-token}/")
+	public List<StoreLocation> getCommerceByOperations(
+	  @PathVariable String operationToken
+	) {
+	  return commerceService.getCommerceByOperation(operationToken);
 	}
 	 
-	@GetMapping("/species/{species}/")
-	public List<Commerce> getCommerceBySpecies(@PathVariable String species)
+	@GetMapping("/brand/{brandToken}/")
+	public List<StoreLocation> getCommerceByBrand(@PathVariable String brandToken)
 	{
-	  return commerceService.commerceBySpecies(species);
+	  return commerceService.getCommerceByBrand(brandToken);
 	}
 }
