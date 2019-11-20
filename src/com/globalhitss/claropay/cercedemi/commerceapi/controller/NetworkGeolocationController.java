@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.globalhitss.claropay.cercademi.commerceapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercademi.commerceapi.service.NetworkGeolocationService;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.NetworkGeolocation;
 
@@ -22,12 +23,14 @@ public class NetworkGeolocationController
   
   @GetMapping("/my-ip/")
   public List<NetworkGeolocation> getLocationByIP(HttpServletRequest rq)
+    throws DataNotFoundException
   {
-    return networkGeolocationService.getLocationByIP(rq);
+    return networkGeolocationService.getLocationByIP(rq);    
   }
   
   @GetMapping("/ip/{ip}/")
   public List<NetworkGeolocation> getLocationByIP(@PathVariable String ip)
+    throws DataNotFoundException
   {
     return networkGeolocationService.getLocationByIP(ip);
   }

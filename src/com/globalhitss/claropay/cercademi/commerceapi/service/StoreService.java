@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhitss.claropay.cercademi.commerceapi.dao.StoreBrandDao;
 import com.globalhitss.claropay.cercademi.commerceapi.dao.StoreLocationDao;
+import com.globalhitss.claropay.cercademi.commerceapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreBrand;
 import com.globalhitss.claropay.cercedemi.commerceapi.model.StoreLocation;
 
@@ -25,33 +26,63 @@ public class StoreService
   private StoreBrandDao storeBrandDao;
   
   @Transactional(readOnly = true)
-  public StoreLocation getStoreLocationById(int id)
+  public StoreLocation getStoreLocationById(int id) 
+    throws DataNotFoundException 
   {
-    return storeLocationDao.selectById(id);
+    StoreLocation storeLocation = storeLocationDao.selectById(id);
+    
+    if (storeLocation==null) {
+      throw new DataNotFoundException(
+        "Store location with ID '"+id+"' is not found."
+      );
+    }
+    
+    return storeLocation;
   }
   
   @Transactional(readOnly = true)
   public List<StoreLocation> getStoreLocationsByLatAndLng(double lat, double lng)
+    throws DataNotFoundException
   {
-    return storeLocationDao.selectByLatAndLng(lat, lng); 
-  }
-  
-  @Transactional(readOnly = true)
-  public List<StoreLocation> getStoreLocationsByOperationType(String operation)
-  {
-    return storeLocationDao.selectByClass(operation);
+    List<StoreLocation> storeLocations = storeLocationDao.selectByLatAndLng(lat, lng);
+    
+    if (storeLocations.size()==0) {
+      throw new DataNotFoundException(
+        "There aren't locations associated with geolocation: ("+lat+","+lng+")"
+      );
+    }
+    
+    return storeLocations;
   }
   
   @Transactional(readOnly = true)
   public List<StoreLocation> getStoreLocationsByBrandType(String brandToken)
+    throws DataNotFoundException
   {
-    return storeLocationDao.selectByBrand(brandToken);
+    List<StoreLocation> storeLocations = storeLocationDao.selectByBrand(brandToken);
+    
+    if (storeLocations.size()==0) {
+      throw new DataNotFoundException(
+        "There aren't locations associated with brand: "+brandToken
+      );
+    }
+    
+    return storeLocations;
   }
   
   @Transactional(readOnly = true)
   public List<StoreBrand> getStoreBrands()
+    throws DataNotFoundException
   {
-    return storeBrandDao.getAll();
+    List<StoreBrand> storeBrands = storeBrandDao.getAll();
+    
+    if (storeBrands.size()==0) {
+      throw new DataNotFoundException(
+        "There aren't store brands allocated into database."
+      );
+    }
+    
+    return storeBrands;
   }
 }
 

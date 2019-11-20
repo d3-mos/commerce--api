@@ -10,8 +10,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.StoreController;
+import com.globalhitss.claropay.cercademi.commerceapi.exception.GlobalErrorsHandler;
 import com.globalhitss.claropay.cercedemi.commerceapi.controller.NetworkGeolocationController;
+
 
 @Configuration
 @EnableWebMvc
@@ -24,19 +27,22 @@ public class WebConfig implements WebMvcConfigurer
 	@Bean 
 	public NetworkGeolocationController networkGeolocationController() { return new NetworkGeolocationController(); }
 	
+	@Bean
+	public GlobalErrorsHandler globalErrorsHandler() { return new GlobalErrorsHandler(); }
 	
+	 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters)
 	{
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JodaModule());
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new JodaModule());
 	
-        objectMapper.setDateFormat(
-        	new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        );
-        
-        converters.add(
-        	new MappingJackson2HttpMessageConverter(objectMapper)
-        );
+    objectMapper.setDateFormat(
+      new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    );
+    
+    converters.add(
+      new MappingJackson2HttpMessageConverter(objectMapper)
+    );
 	}
 }
