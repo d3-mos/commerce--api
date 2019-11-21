@@ -18,7 +18,6 @@ import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
 
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/store")
 @Produces("application/json")
 @Consumes("application/json")

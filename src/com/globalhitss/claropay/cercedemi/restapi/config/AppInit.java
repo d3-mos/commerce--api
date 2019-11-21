@@ -17,6 +17,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
 	@Nullable
 	protected Class<?>[] getRootConfigClasses() {
 	  return new Class<?>[] {
+	      SwaggerConfig.class,
         AppConfig.class,
         HibernateConfig.class
 	  };

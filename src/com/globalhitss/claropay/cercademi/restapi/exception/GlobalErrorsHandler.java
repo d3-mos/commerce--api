@@ -45,7 +45,7 @@ public class GlobalErrorsHandler extends ResponseEntityExceptionHandler
     HttpStatus status,
     WebRequest request
   ) {
-    String error = "Type error with request param.";
+    String error = "Type error at request param.";
     return buildResponseEntity(
       new ApiError(HttpStatus.BAD_REQUEST, error, ex)
     );
