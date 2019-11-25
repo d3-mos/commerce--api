@@ -3,7 +3,7 @@
   <groupId>com.globalhitss.claropay.cercademi</groupId>
   <artifactId>restapi</artifactId>
   <version>0.0.1</version>
-  <name>Commerce API REST</name>
+  <name>Cerca de mi REST API</name>
   <description>This project content the REST API to retrieve commerce information.</description>
   <packaging>war</packaging>
   
