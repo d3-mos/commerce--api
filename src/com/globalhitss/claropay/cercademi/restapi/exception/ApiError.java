@@ -4,18 +4,32 @@ import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(
+  value="API Error",
+  description=""
+    + "It's The general error format, all application use this to throws error"
+    + " messages"
+)
 public class ApiError 
 {
+  @JsonIgnore
+  @ApiModelProperty(hidden=true)
   private HttpStatus status;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+  @ApiModelProperty(notes="Used to display the error's timestamp.", example="2019-11-26 01:34:22")
   private LocalDateTime timestamp;
+  @ApiModelProperty(notes="Message from manager.")
   private String message;
+  @ApiModelProperty(notes="Message from debugger.")
   private String debugMessage;
 
   private ApiError() {
@@ -39,6 +53,7 @@ public class ApiError
     this.status = status;
     this.message = message;
     this.debugMessage = ex.getLocalizedMessage();
+    ex.printStackTrace();
   }
   
   public HttpStatus getStatus() {

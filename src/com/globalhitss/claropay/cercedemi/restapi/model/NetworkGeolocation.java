@@ -8,8 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="CAT_NETWORK_GEOLOCATION")
+@ApiModel(
+  value="Network Geolocation",
+  description=""
+    + "It's the model to represent location data associated with an subnet."
+    + " The IP address geolocation query finds the subnets to which the IP "
+    + "address belogs."
+)
 public class NetworkGeolocation implements Serializable
 {
 	/**
@@ -20,27 +30,37 @@ public class NetworkGeolocation implements Serializable
 	@Id
 	@Column(name="IP_FROM")
 	@JsonIgnore
+	@ApiModelProperty(hidden=true)
 	private long ipFrom;
 	
 	@Id
 	@Column(name="IP_TO")
 	@JsonIgnore
+	@ApiModelProperty(hidden=true)
 	private long ipTo;
 
 	@Column(name="NO_NODES")
+	@ApiModelProperty(notes="Number of nodes that belongs to this subnet.")
 	private int noNodes;
 	
 	@Column(name="LATITUDE")
+	@ApiModelProperty(notes="Latitude associated with this subnet.")
 	private double latitude;
 	
 	@Column(name="LONGITUDE")
+	@ApiModelProperty(notes="Latitude associated with this subnet.")
 	private double longitude;
 	
 	@Column(name="ZIP_CODE")
+	@ApiModelProperty(notes="Zip code associated with this subnet.")
 	private String zipCode;
 	
 	@Id
 	@Column(name="DATASOURCE")
+	@ApiModelProperty(
+	  notes="Source of location reference.",
+	  allowableValues="ip2location, geolite"
+	)
   private String datasource;
 
   public NetworkGeolocation() {}
