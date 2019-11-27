@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(
-  value="API Error",
+  value="ApiError",
   description=""
     + "It's The general error format, all application use this to throws error"
     + " messages"
@@ -25,7 +25,10 @@ public class ApiError
   @ApiModelProperty(hidden=true)
   private HttpStatus status;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-  @ApiModelProperty(notes="Used to display the error's timestamp.", example="2019-11-26 01:34:22")
+  @ApiModelProperty(
+    notes="Used to display the error's timestamp.",
+    example="2019-11-26 01:34:22"
+  )
   private LocalDateTime timestamp;
   @ApiModelProperty(notes="Message from manager.")
   private String message;

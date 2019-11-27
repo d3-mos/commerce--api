@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name="CAT_NETWORK_GEOLOCATION")
 @ApiModel(
-  value="Network Geolocation",
+  value="NetworkGeolocation",
   description=""
     + "It's the model to represent location data associated with an subnet."
     + " The IP address geolocation query finds the subnets to which the IP "
@@ -40,26 +40,39 @@ public class NetworkGeolocation implements Serializable
 	private long ipTo;
 
 	@Column(name="NO_NODES")
-	@ApiModelProperty(notes="Number of nodes that belongs to this subnet.")
+	@ApiModelProperty(
+	  notes="Number of nodes that belongs to this subnet.",
+	  example="256"
+	)
 	private int noNodes;
 	
 	@Column(name="LATITUDE")
-	@ApiModelProperty(notes="Latitude associated with this subnet.")
+	@ApiModelProperty(
+	  notes="Latitude associated with this subnet.",
+	  example="19.4407"
+	)
 	private double latitude;
 	
 	@Column(name="LONGITUDE")
-	@ApiModelProperty(notes="Latitude associated with this subnet.")
+	@ApiModelProperty(
+	  notes="Latitude associated with this subnet.",
+	  example="-99.1964"
+	)
 	private double longitude;
 	
 	@Column(name="ZIP_CODE")
-	@ApiModelProperty(notes="Zip code associated with this subnet.")
+	@ApiModelProperty(
+	  notes="Zip code associated with this subnet.",
+	  example="11529"
+	)
 	private String zipCode;
 	
 	@Id
 	@Column(name="DATASOURCE")
 	@ApiModelProperty(
 	  notes="Source of location reference.",
-	  allowableValues="ip2location, geolite"
+	  allowableValues="ip2location, geolite",
+	  example="geolite"
 	)
   private String datasource;
 

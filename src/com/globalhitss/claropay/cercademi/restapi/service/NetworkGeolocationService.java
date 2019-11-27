@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.globalhitss.claropay.cercademi.restapi.dao.NetworkGeolocationDao;
+import com.globalhitss.claropay.cercademi.restapi.exception.DataInvalidFormatException;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
+import com.globalhitss.claropay.cercademi.restapi.exception.UnknownErrorException;
 import com.globalhitss.claropay.cercedemi.restapi.model.NetworkGeolocation;
-
+import static com.globalhitss.claropay.cercademi.restapi.util.IPTools.regexIPAddress;
 
 @Service
 public class NetworkGeolocationService 
@@ -23,16 +25,25 @@ public class NetworkGeolocationService
   @Qualifier("NetworkGeolocationSQLDao")
   private NetworkGeolocationDao networkGeolocationDao;
   
+  @Transactional(readOnly = true)
   public List<NetworkGeolocation> getLocationByIP(HttpServletRequest rq)
-    throws DataNotFoundException
+    throws DataNotFoundException, UnknownErrorException
   {
-    return getLocationByIP(getIPFromHTTPRequest(rq));
+    try {
+      return getLocationByIP(getIPFromHTTPRequest(rq));
+    } catch(DataInvalidFormatException e) {
+      throw new UnknownErrorException("The server can't get your public IP", e);
+    }
   }
   
   @Transactional(readOnly = true)
   public List<NetworkGeolocation> getLocationByIP(String ip)
-    throws DataNotFoundException
+    throws DataNotFoundException, DataInvalidFormatException
   {
+    if (!ip.matches(regexIPAddress)) {
+      throw new DataInvalidFormatException("Your IP ("+ip+") doesn't match with the IP address regex."); 
+    }
+    
     List<NetworkGeolocation> netGeoList = networkGeolocationDao
       .getLocationByIP(ip2num(ip));
     

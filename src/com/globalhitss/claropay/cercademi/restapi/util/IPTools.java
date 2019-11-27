@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 public class IPTools 
 {
 
+  public final static String regexIPAddress ="^((25[0-5]|2[0-4]\\d|(1?)\\d{1,2})\\.){3}(25[0-5]|2[0-4]\\d|(1?)\\d{1,2})$";
+  
   /** */
   private static String completeByte(String byteStr)
   {

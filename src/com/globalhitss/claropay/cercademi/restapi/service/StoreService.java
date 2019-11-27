@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.globalhitss.claropay.cercademi.restapi.dao.StoreBrandDao;
 import com.globalhitss.claropay.cercademi.restapi.dao.StoreLocationDao;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
+import com.globalhitss.claropay.cercademi.restapi.exception.DataOutOfRangeException;
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreBrand;
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
+import static com.globalhitss.claropay.cercademi.restapi.util.Geolocation.areMxCoordinates;
 
 
 @Service
@@ -42,9 +44,13 @@ public class StoreService
   
   @Transactional(readOnly = true)
   public List<StoreLocation> getStoreLocationsByLatAndLng(double lat, double lng)
-    throws DataNotFoundException
+    throws DataNotFoundException, DataOutOfRangeException
   {
     List<StoreLocation> storeLocations = storeLocationDao.selectByLatAndLng(lat, lng);
+    
+    if (!areMxCoordinates(lat, lng) ) {
+      throw new DataOutOfRangeException("Your coordinates ("+lat+","+lng+") aren't from Mexico.");
+    }
     
     if (storeLocations.size()==0) {
       throw new DataNotFoundException(

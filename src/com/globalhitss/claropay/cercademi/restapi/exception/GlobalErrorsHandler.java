@@ -78,7 +78,7 @@ public class GlobalErrorsHandler extends ResponseEntityExceptionHandler
     );
   }
 
-  /***/
+  /** 404 Not found data. */
   @ExceptionHandler({DataNotFoundException.class})
   protected ResponseEntity<Object> handleDataNotFoundException(
     Exception ex
@@ -89,8 +89,30 @@ public class GlobalErrorsHandler extends ResponseEntityExceptionHandler
       );
   }
   
-  /***/
-  @ExceptionHandler({Exception.class})
+  /** 400 Bad data */
+  @ExceptionHandler({DataInvalidFormatException.class})
+  protected ResponseEntity<Object> handleDataInvalidFormatException(
+    Exception ex
+  ) {
+      String error = "Format error parameter.";
+      return buildResponseEntity(
+        new ApiError(HttpStatus.BAD_REQUEST, error, ex)
+      );
+  }
+  
+  /** 400 Data out of range. */
+  @ExceptionHandler({DataOutOfRangeException.class})
+  protected ResponseEntity<Object> handleDataOutOfRangeException(
+    Exception ex
+  ) {
+      String error = "Data out of range.";
+      return buildResponseEntity(
+        new ApiError(HttpStatus.BAD_REQUEST, error, ex)
+      );
+  }  
+  
+  /** 500 unknown server error. */
+  @ExceptionHandler({Exception.class, UnknownErrorException.class})
   protected ResponseEntity<Object> handleAnyException(
     Exception ex
   ) {
