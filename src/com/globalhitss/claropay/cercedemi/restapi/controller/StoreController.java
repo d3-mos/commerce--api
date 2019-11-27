@@ -14,7 +14,6 @@ import com.globalhitss.claropay.cercademi.restapi.exception.ApiError;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataOutOfRangeException;
 import com.globalhitss.claropay.cercademi.restapi.service.StoreService;
-import com.globalhitss.claropay.cercedemi.restapi.model.NetworkGeolocation;
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreBrand;
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
 
