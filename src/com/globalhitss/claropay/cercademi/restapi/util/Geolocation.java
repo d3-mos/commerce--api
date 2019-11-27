@@ -4,8 +4,8 @@ public class Geolocation
 {
   public final static double MX_MAX_LAT = 32.718333333;
   public final static double MX_MIN_LAT = 14.540833333;
-  public final static double MX_MAX_LNG = 118.45111111;
-  public final static double MX_MIN_LNG = 86.71;
+  public final static double MX_MAX_LNG = -86.71;
+  public final static double MX_MIN_LNG = -118.45111111;
   
   public static boolean latIsInMxLatRange(double lat)
   {
