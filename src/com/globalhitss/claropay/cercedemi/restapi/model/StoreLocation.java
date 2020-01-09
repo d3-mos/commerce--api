@@ -41,6 +41,14 @@ public class StoreLocation {
   @JsonIgnore
   private String pastId;
   
+  @Column(name="LAT_KM_CUAD")
+  @JsonIgnore
+  private double latKm;
+  
+  @Column(name="LNG_KM_CUAD")//vRadius
+  @JsonIgnore
+  private double lngKm;
+  
   public StoreLocation() {}
   
   public StoreLocation(
@@ -49,7 +57,9 @@ public class StoreLocation {
     String address, 
     double lat, 
     double lng,
-    String pastId
+    String pastId,
+    double latKm,
+    double lngKm
   ) {
     this.id         = id;
     this.brandToken = brandToken;
@@ -57,6 +67,8 @@ public class StoreLocation {
     this.lat        = lat;
     this.lng        = lng;
     this.pastId     = pastId;
+    this.latKm      = latKm;
+    this.lngKm      = lngKm;
   }
   
   public int getId() {
@@ -113,5 +125,21 @@ public class StoreLocation {
 
   public void setIdBrand(int idBrand) {
     this.idBrand = idBrand;
+  }
+  
+  public double getLatKm() {
+    return latKm;
+  }
+  
+  public void setLatKm(double latKm) {
+    this.latKm = latKm;
+  }
+  
+  public double getLngKm() {
+    return lngKm;
+  }
+  
+  public void setLngKm(double lngKm) {
+    this.lngKm = lngKm;
   }
 }

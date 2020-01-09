@@ -21,4 +21,16 @@ public class Geolocation
   {
     return latIsInMxLatRange(lat) && lngIsInMxLngRange(lng);
   }
+  
+  public static double latToKm(double lat) {
+    return lat * 110;
+  }
+  
+  public static double lngToKm(double lng, double lat) {
+    return lng * 110 * Math.cos(degToRad(lat)) ;
+  }
+  
+  public static double degToRad(double deg) {
+    return deg * Math.PI / 180;
+  }
 }

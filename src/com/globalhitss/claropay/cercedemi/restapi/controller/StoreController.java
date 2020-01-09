@@ -3,6 +3,7 @@ package com.globalhitss.claropay.cercedemi.restapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import io.swagger.annotations.ApiResponses;
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/store")
 @Produces("application/json")
 @Consumes("application/json")
@@ -120,7 +122,7 @@ public class StoreController
       )
     }
   )
-  @GetMapping("/location/lat/{lat}/lng/{lng}/")
+  @GetMapping("/location/lat/{lat}/lng/{lng}/visibility-radius/{vRadius}/")
 	public List<StoreLocation> getStoreLocationsByLatAndLng(
 	  @ApiParam(
 	    value="Latitude of point",
@@ -131,11 +133,13 @@ public class StoreController
 	    value="Longitude of point",
 	    example="-99.1964",
 	    required=true
-	  ) @PathVariable double lng
+	  ) @PathVariable double lng,
+	  
+	  @PathVariable double vRadius
 	)
 	  throws DataNotFoundException, DataOutOfRangeException
   {
-    return storeService.getStoreLocationsByLatAndLng(lat, lng);
+    return storeService.getStoreLocationsByLatAndLng(lat, lng, vRadius);
 	}
 	
   /***/
