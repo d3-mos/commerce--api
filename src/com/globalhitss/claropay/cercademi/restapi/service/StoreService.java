@@ -14,11 +14,15 @@ import com.globalhitss.claropay.cercademi.restapi.exception.DataOutOfRangeExcept
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreBrand;
 import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
 import static com.globalhitss.claropay.cercademi.restapi.util.Geolocation.areMxCoordinates;
+import static com.globalhitss.claropay.cercademi.restapi.util.Geolocation.latToKm;
+import static com.globalhitss.claropay.cercademi.restapi.util.Geolocation.lngToKm;
 
 
 @Service
 public class StoreService
 {
+  public final static double MAX_VISIBILITY_RADIUS = 2.9;
+  
   @Autowired
   @Qualifier("StoreLocationDaoSQL")
   private StoreLocationDao storeLocationDao;
@@ -43,14 +47,20 @@ public class StoreService
   }
   
   @Transactional(readOnly = true)
-  public List<StoreLocation> getStoreLocationsByLatAndLng(double lat, double lng)
+  public List<StoreLocation> getStoreLocationsByLatAndLng(double lat, double lng, double vRadius)
     throws DataNotFoundException, DataOutOfRangeException
-  {
-    List<StoreLocation> storeLocations = storeLocationDao.selectByLatAndLng(lat, lng);
+  {    
+    if (vRadius>MAX_VISIBILITY_RADIUS) {
+      throw new DataOutOfRangeException("Visibility radius out of range.");
+    }
     
     if (!areMxCoordinates(lat, lng) ) {
       throw new DataOutOfRangeException("Your coordinates ("+lat+","+lng+") aren't from Mexico.");
     }
+   
+    List<StoreLocation> storeLocations = storeLocationDao.selectByLatAndLng(
+      latToKm(lat), lngToKm(lng, lat), vRadius
+    );
     
     if (storeLocations.size()==0) {
       throw new DataNotFoundException(

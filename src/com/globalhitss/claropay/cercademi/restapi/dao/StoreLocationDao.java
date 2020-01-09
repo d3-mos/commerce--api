@@ -9,7 +9,7 @@ public interface StoreLocationDao
 {
   public StoreLocation selectById(int id);
   
-  public List<StoreLocation> selectByLatAndLng(double lat, double lng);
+  public List<StoreLocation> selectByLatAndLng(double lat, double lng, double vRadius);
   
   public List<StoreLocation> selectByBrand(String species);
   

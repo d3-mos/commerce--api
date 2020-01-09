@@ -41,14 +41,15 @@ public class StoreLocationDaoSQL implements StoreLocationDao
   }
   
   /***/
-  public List<StoreLocation> selectByLatAndLng(double lat, double lng)
+  public List<StoreLocation> selectByLatAndLng(double latKm, double lngKm, double vRadius)
   {
     String querySelect = "from StoreLocation where "
-     + "sqrt( pow(lat - (:lat), 2) + pow(lng - (:lng), 2) ) < 0.02";
+     + "sqrt( pow(latKm - (:latKm), 2) + pow(lngKm - (:lngKm), 2) ) < (:vRadius)";
     
     Query<StoreLocation> query = getQuery(querySelect);
-    query.setParameter("lat", lat);
-    query.setParameter("lng", lng);
+    query.setParameter("latKm", latKm);
+    query.setParameter("lngKm", lngKm);
+    query.setParameter("vRadius", vRadius);
     
     return query.getResultList();
   }
