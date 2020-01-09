@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.controller;
+package com.globalhitss.claropay.cercademi.restapi.controller;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.globalhitss.claropay.cercademi.restapi.exception.DataInvalidFormatExc
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercademi.restapi.exception.UnknownErrorException;
 import com.globalhitss.claropay.cercademi.restapi.service.NetworkGeolocationService;
-import com.globalhitss.claropay.cercedemi.restapi.model.NetworkGeolocation;
+import com.globalhitss.claropay.cercademi.restapi.model.NetworkGeolocation;
 import static com.globalhitss.claropay.cercademi.restapi.util.IPTools.regexIPAddress;
 
 

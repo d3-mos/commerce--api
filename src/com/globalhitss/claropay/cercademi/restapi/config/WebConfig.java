@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.config;
+package com.globalhitss.claropay.cercademi.restapi.config;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.globalhitss.claropay.cercademi.restapi.exception.GlobalErrorsHandler;
 import com.globalhitss.claropay.cercademi.restapi.interceptors.CorsInterceptor;
-import com.globalhitss.claropay.cercedemi.restapi.controller.NetworkGeolocationController;
-import com.globalhitss.claropay.cercedemi.restapi.controller.StoreController;
+import com.globalhitss.claropay.cercademi.restapi.controller.NetworkGeolocationController;
+import com.globalhitss.claropay.cercademi.restapi.controller.StoreController;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

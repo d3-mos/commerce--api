@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreLocation;
 
 import org.hibernate.query.Query;
 

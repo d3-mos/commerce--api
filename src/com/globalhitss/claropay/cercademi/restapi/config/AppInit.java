@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.config;
+package com.globalhitss.claropay.cercademi.restapi.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.config;
+package com.globalhitss.claropay.cercademi.restapi.config;
 
 import java.util.Properties;
 
@@ -17,11 +17,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.globalhitss.claropay.cercedemi.restapi.model.NetworkGeolocation;
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreBrand;
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreOperation;
-import com.globalhitss.claropay.cercedemi.restapi.model.StorePromotion;
+import com.globalhitss.claropay.cercademi.restapi.model.NetworkGeolocation;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreBrand;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreLocation;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreOperation;
+import com.globalhitss.claropay.cercademi.restapi.model.StorePromotion;
 
 
 

@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.model;
+package com.globalhitss.claropay.cercademi.restapi.model;
 
 import java.io.Serializable;
 

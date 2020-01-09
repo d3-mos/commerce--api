@@ -15,7 +15,7 @@ import com.globalhitss.claropay.cercademi.restapi.dao.NetworkGeolocationDao;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataInvalidFormatException;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercademi.restapi.exception.UnknownErrorException;
-import com.globalhitss.claropay.cercedemi.restapi.model.NetworkGeolocation;
+import com.globalhitss.claropay.cercademi.restapi.model.NetworkGeolocation;
 import static com.globalhitss.claropay.cercademi.restapi.util.IPTools.regexIPAddress;
 
 @Service

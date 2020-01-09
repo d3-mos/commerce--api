@@ -2,7 +2,7 @@ package com.globalhitss.claropay.cercademi.restapi.dao;
 
 import java.util.List;
 
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreLocation;
 
 
 public interface StoreLocationDao 

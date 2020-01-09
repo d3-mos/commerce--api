@@ -1,4 +1,4 @@
-package com.globalhitss.claropay.cercedemi.restapi.controller;
+package com.globalhitss.claropay.cercademi.restapi.controller;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import com.globalhitss.claropay.cercademi.restapi.exception.ApiError;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataNotFoundException;
 import com.globalhitss.claropay.cercademi.restapi.exception.DataOutOfRangeException;
 import com.globalhitss.claropay.cercademi.restapi.service.StoreService;
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreBrand;
-import com.globalhitss.claropay.cercedemi.restapi.model.StoreLocation;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreBrand;
+import com.globalhitss.claropay.cercademi.restapi.model.StoreLocation;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
