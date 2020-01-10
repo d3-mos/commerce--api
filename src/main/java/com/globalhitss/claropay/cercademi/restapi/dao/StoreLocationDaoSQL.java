@@ -3,8 +3,9 @@ package com.globalhitss.claropay.cercademi.restapi.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -19,13 +20,11 @@ import org.hibernate.query.Query;
 @Qualifier("StoreLocationDaoSQL")
 public class StoreLocationDaoSQL implements StoreLocationDao 
 {
-
   @Autowired
-  private SessionFactory sessionFactory;
-  
-  private Session getSession()
-  {
-    return sessionFactory.getCurrentSession();
+  private EntityManager entityManager;
+
+  private Session getSession() {
+      return entityManager.unwrap(Session.class);
   }
 
   private Query<StoreLocation> getQuery(String hqlSentence)

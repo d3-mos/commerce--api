@@ -13,9 +13,9 @@ public class CorsInterceptor extends HandlerInterceptorAdapter {
    * Tener en cuenta las siguientes excepciones:
    * 
    * java.lang.IllegalArgumentException: Illegal base64 character -f
-     * java.lang.ArrayIndexOutOfBoundsException: 1 //cuando se envía peticion sin encabezado
-     * javax.persistence.NoResultException: No entity found for query
-     * cadena vacia (no genera excepción ).
+   * java.lang.ArrayIndexOutOfBoundsException: 1 //cuando se envía peticion sin encabezado
+   * javax.persistence.NoResultException: No entity found for query
+   * cadena vacia (no genera excepción ).
    */
     public boolean preHandle(
       HttpServletRequest  solicitud,

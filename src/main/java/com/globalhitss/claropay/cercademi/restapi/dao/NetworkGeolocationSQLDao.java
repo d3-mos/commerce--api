@@ -2,8 +2,9 @@ package com.globalhitss.claropay.cercademi.restapi.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,15 +16,14 @@ import com.globalhitss.claropay.cercademi.restapi.model.NetworkGeolocation;
 @Repository
 @Qualifier("NetworkGeolocationSQLDao")
 public class NetworkGeolocationSQLDao implements NetworkGeolocationDao
-{
+{ 
   @Autowired
-  private SessionFactory sessionFactory;
-	  
-  private Session getSession()
-  {
-    return sessionFactory.getCurrentSession();
+  private EntityManager entityManager;
+
+  private Session getSession() {
+      return entityManager.unwrap(Session.class);
   }
-  
+
   public List<NetworkGeolocation> getLocationByIP(long ip)
   {
     String querySelect = "from NetworkGeolocation as t "
