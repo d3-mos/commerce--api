@@ -2,9 +2,10 @@ package com.globalhitss.claropay.cercademi.restapi.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,13 +15,13 @@ import com.globalhitss.claropay.cercademi.restapi.model.StoreBrand;
 
 @Repository
 @Qualifier("StoreBrandDaoSQL")
-public class StoreBrandDaoSQL implements StoreBrandDao{
+public class StoreBrandDaoSQL implements StoreBrandDao
+{
   @Autowired
-  private SessionFactory sessionFactory;
-  
-  private Session getSession()
-  {
-    return sessionFactory.getCurrentSession();
+  private EntityManager entityManager;
+
+  private Session getSession() {
+      return entityManager.unwrap(Session.class);
   }
 
   private Query<StoreBrand> getQuery(String hqlSentence)

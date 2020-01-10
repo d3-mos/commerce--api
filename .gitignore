@@ -1,5 +1,5 @@
 # Environment properties.
-**/app.properties
+**/application.properties
 
 # Eclipse IDE configuration files.
 .settings
